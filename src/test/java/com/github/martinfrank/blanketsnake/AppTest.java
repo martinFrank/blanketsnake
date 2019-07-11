@@ -1,8 +1,8 @@
-package com.github.martinfrank;
-
-import static org.junit.Assert.assertTrue;
+package com.github.martinfrank.blanketsnake;
 
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.

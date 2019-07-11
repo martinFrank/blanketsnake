@@ -1,9 +1,5 @@
-package com.github.martinfrank;
+package com.github.martinfrank.blanketsnake;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )

@@ -6,76 +6,248 @@
 
   <groupId>com.github.martinfrank</groupId>
   <artifactId>blanketsnake</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
 
   <name>blanketsnake</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+    <description>this project is an experiment to evaulate the size of the blanket for my baby snake</description>
+    <url>https://github.com/martinFrank/blanketsnake</url>
+    <organization>
+        <name>Martin Frank</name>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Martin Frank</name>
+            <email>martin.frank.privat@gmail.com</email>
+            <organization>Martin Frank</organization>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/github.com/martinFrank/blanketsnake.git</connection>
+        <developerConnection>scm:git:ssh://github.com/martinFrank/blanketsnake.git</developerConnection>
+        <url>https://github.com/martinFrank/catansettler/tree/master</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>GNU GENERAL PUBLIC LICENSE</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+        </license>
+    </licenses>
 
   <properties>
+      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+      <sonar.login>fcb0d8a8974118a3e67943572dafdafe9939d722</sonar.login>
+      <sonar.projectKey>martinFrank_blanketsnake</sonar.projectKey>
+      <sonar.organization>martinfrank-github</sonar.organization>
+      <sonar.language>java</sonar.language>
+      <sonar.java.libraries>target</sonar.java.libraries>
+      <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+      <sonar.scm.provider>git</sonar.scm.provider>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+      <maven.compiler.source>8</maven.compiler.source>
+      <maven.compiler.target>8</maven.compiler.target>
   </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+        <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.2.0</version>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.9.5</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.7.5</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.7.5</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-controls</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-fxml</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+      <dependency>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+          <version>2.1</version>
+      </dependency>
+
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <pluginManagement>
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>sonar-maven-plugin</artifactId>
+              <version>3.2</version>
+          </plugin>
+          <plugin>
+              <groupId>org.sonarsource.scanner.maven</groupId>
+              <artifactId>sonar-maven-plugin</artifactId>
+              <version>3.5.0.1254</version>
+              <executions>
+                  <execution>
+                      <phase>verify</phase>
+                      <goals>
+                          <goal>sonar</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+          <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>0.8.2</version>
+          </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+            <version>2.5</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+          <plugin>
+              <artifactId>maven-source-plugin</artifactId>
+              <version>3.0.1</version>
+          </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
+            <version>2.6</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+            <version>3.6.1</version>
+            <configuration>
+                <source>8</source>
+                <target>8</target>
+            </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+            <version>2.12.4</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
         <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>2.7</version>
         </plugin>
       </plugins>
-    </pluginManagement>
+      </pluginManagement>
+
+      <plugins>
+          <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <executions>
+                  <execution>
+                      <id>prepare-agent</id>
+                      <goals>
+                          <goal>prepare-agent</goal>
+                      </goals>
+                  </execution>
+                  <execution>
+                      <id>prepare-agent-integration</id>
+                      <goals>
+                          <goal>prepare-agent-integration</goal>
+                      </goals>
+                  </execution>
+                  <execution>
+                      <id>jacoco-site</id>
+                      <phase>verify</phase>
+                      <goals>
+                          <goal>report</goal>
+                      </goals>
+                  </execution>
+                  <execution>
+                      <id>report</id>
+                      <phase>test</phase>
+                      <goals>
+                          <goal>report</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+          <plugin>
+              <groupId>org.sonarsource.scanner.maven</groupId>
+              <artifactId>sonar-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-source-plugin</artifactId>
+              <executions>
+                  <execution>
+                      <id>attach-sources</id>
+                      <goals>
+                          <goal>jar</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>3.0.1</version>
+              <executions>
+                  <execution>
+                      <id>attach-javadocs</id>
+                      <goals>
+                          <goal>jar</goal>
+                      </goals>
+                  </execution>
+              </executions>
+              <configuration>
+                  <source>8</source>
+              </configuration>
+          </plugin>
+
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-gpg-plugin</artifactId>
+              <version>1.6</version>
+              <executions>
+                  <execution>
+                      <id>sign-artifacts</id>
+                      <phase>verify</phase>
+                      <goals>
+                          <goal>sign</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
   </build>
 </project>
